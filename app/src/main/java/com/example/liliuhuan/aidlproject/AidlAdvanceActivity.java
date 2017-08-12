@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.liliuhuan.aidlproject.service.MyAidlAdvanceService;
 
@@ -76,7 +77,7 @@ public class AidlAdvanceActivity extends AppCompatActivity {
 
         @Override
         public void onPreparedStart() throws RemoteException {
-
+            Toast.makeText(AidlAdvanceActivity.this,"开始前",Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -87,7 +88,7 @@ public class AidlAdvanceActivity extends AppCompatActivity {
 
         @Override
         public void onDownloadCompletion() throws RemoteException {
-
+            Toast.makeText(AidlAdvanceActivity.this,"下载完成",Toast.LENGTH_LONG).show();
         }
     };
 }
