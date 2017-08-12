@@ -35,6 +35,7 @@ public class ProcessingDataUtils {
     }
 
     public void startDownloading() {
+
             new AsyncTask<Void, Integer, File>() {
                 @Override
                 protected void onPreExecute() {
@@ -80,7 +81,13 @@ public class ProcessingDataUtils {
                             conn.setConnectTimeout(10000);
                             InputStream is = conn.getInputStream();
 
-                            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath(), "123.jpg");
+                            File file = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "c1234.jpg");
+                            File rootFile=file.getParentFile();//得到父文件夹
+                            //不存在 则创建一个文件
+                            if(!file.exists()) {
+                                rootFile.mkdirs();
+                                file.createNewFile();
+                            }
                             FileOutputStream fos = new FileOutputStream(file);
                             BufferedInputStream bis = new BufferedInputStream(is);
 
@@ -113,6 +120,6 @@ public class ProcessingDataUtils {
                     }
                 }
             }.execute();
-
     }
+
 }
