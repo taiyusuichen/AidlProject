@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.liliuhuan.aidlproject.service.MyAidlAdvanceService;
 
 public class AidlAdvanceActivity extends AppCompatActivity {
-    private ServiceConnection conn = new MyAidlSeviceConnection();
+    private ServiceConnection conn1 = new MyAidlSeviceConnection();
     private SeekBar seekBar;
     private TextView tvShow;
     private Button btnRandom;
@@ -27,7 +27,7 @@ public class AidlAdvanceActivity extends AppCompatActivity {
         super.onStart();
         Intent intent = new Intent(this, MyAidlAdvanceService.class);
         startService(intent);
-        bindService(intent, conn, BIND_AUTO_CREATE);
+        bindService(intent, conn1, BIND_AUTO_CREATE);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class AidlAdvanceActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(conn);
+        unbindService(conn1);
         try {
             aidlAdvanceInterface.unRegisterListener(mCallback);
         } catch (RemoteException e) {

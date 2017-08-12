@@ -27,8 +27,8 @@ public class MyAidlAdvanceService extends Service {
 
     private class AdvanceBinder extends IMyAidlAdvanceInterface.Stub {
         private final WeakReference<MyAidlAdvanceService> mService;
-        private AdvanceBinder(final MyAidlAdvanceService service) {
-            mService = new WeakReference<MyAidlAdvanceService>(service);
+        private AdvanceBinder( MyAidlAdvanceService service) {
+            mService = new WeakReference<>(service);
         }
 
         @Override
